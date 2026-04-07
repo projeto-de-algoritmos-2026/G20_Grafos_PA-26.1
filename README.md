@@ -2,7 +2,7 @@
 |Matrícula | Aluno |
 | -- | -- |
 | 202016266  |  Gabriel Marques de Souza |
-| xx/xxxxxx  |  Danilo Sarmento Barros |
+| 222008468  |  Danilo Sarmento Barros |
 
 ## Sobre 
 Descreva os objetivos do seu projeto e como ele funciona. 
