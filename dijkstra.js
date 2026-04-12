@@ -1,14 +1,11 @@
 const readline = require('readline');
 
-// Tabela de cores ANSI
 const cores = {
     reset: "\x1b[0m", cyan: "\x1b[36m", green: "\x1b[32m",
     yellow: "\x1b[33m", red: "\x1b[31m", bold: "\x1b[1m", magenta: "\x1b[35m"
 };
 
-// ==========================================
-// DEFINIÇÃO DOS CENÁRIOS DE MICROSSERVIÇOS
-// ==========================================
+// Cenários para o teste do algoritmo de dijkstra
 
 const cenarios = {
     "1": {
@@ -79,3 +76,40 @@ const cenarios = {
             console.log(`          (DataWarehouse)-------+${cores.reset}`);
         }
     },
+        "3": {
+        titulo: "App de Delivery (12 Nós)",
+        inicio: "Gateway", destino: "DB_Pedidos",
+        unidade: "ms",
+        grafo: {
+            "Gateway": { "Auth": 10, "Restaurantes": 15, "Rastreamento": 20 },
+            "Auth": { "Gateway": 10, "Checkout": 25 },
+            "Restaurantes": { "Gateway": 15, "Carrinho": 10, "Avaliacao": 20 },
+            "Carrinho": { "Restaurantes": 10, "Checkout": 15 },
+            "Checkout": { "Auth": 25, "Carrinho": 15, "Pagamento": 30 },
+            "Pagamento": { "Checkout": 30, "Notificacao": 10, "DB_Pedidos": 40 },
+            "Notificacao": { "Pagamento": 10, "DB_Pedidos": 15 },
+            "Rastreamento": { "Gateway": 20, "Geo_Routing": 15, "Entregadores": 25 },
+            "Geo_Routing": { "Rastreamento": 15, "Entregadores": 10 },
+            "Entregadores": { "Rastreamento": 25, "Geo_Routing": 10, "DB_Pedidos": 35 },
+            "Avaliacao": { "Restaurantes": 20, "DB_Pedidos": 30 },
+            "DB_Pedidos": { "Pagamento": 40, "Notificacao": 15, "Entregadores": 35, "Avaliacao": 30 }
+        },
+        desenhar: () => {
+            console.log(`${cores.cyan}(Auth)---25---(Checkout)---30---(Pagamento)---10---(Notificacao)`);
+            console.log(`  |               |                  |                  |`);
+            console.log(` 10              15                 40                 15`);
+            console.log(`  |               |                  |                  |`);
+            console.log(`(Gateway)-15-(Restaurantes)-10-(Carrinho)               |`);
+            console.log(`  |               |                                     |`);
+            console.log(` 20              20                                     |`);
+            console.log(`  |               |                                     |`);
+            console.log(`(Rastreamento) (Avaliacao)---------30-------+           |`);
+            console.log(`  |       \\                                 |           |`);
+            console.log(` 25       15                                |           |`);
+            console.log(`  |         \\                               |           |`);
+            console.log(`(Entregadores)-10-(Geo_Routing)        (DB_Pedidos)-----+`);
+            console.log(`         \\                                  /`);
+            console.log(`          +---------------35---------------+${cores.reset}`);
+        }
+    }
+};
