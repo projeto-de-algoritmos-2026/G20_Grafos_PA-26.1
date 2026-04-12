@@ -113,3 +113,54 @@ const cenarios = {
         }
     }
 };
+
+// Função do dijkstra
+
+function dijkstraVisual(grafo, inicio, destino, unidadeMedida) {
+    const distancias = {};
+    const anteriores = {};
+    const naoVisitados = new Set(Object.keys(grafo));
+
+    for (let no in grafo) {
+        distancias[no] = Infinity;
+        anteriores[no] = null;
+    }
+    distancias[inicio] = 0;
+
+    console.log(`\n${cores.yellow}Iniciando rastreamento de [${inicio}] para [${destino}]...${cores.reset}\n`);
+
+    while (naoVisitados.size > 0) {
+        let noAtual = null;
+        for (let no of naoVisitados) {
+            if (noAtual === null || distancias[no] < distancias[noAtual]) {
+                noAtual = no;
+            }
+        }
+
+        if (distancias[noAtual] === Infinity) break;
+        if (noAtual === destino) break;
+
+        console.log(`--> Analisando nó [${cores.bold}${noAtual}${cores.reset}] (Menor custo atual: ${distancias[noAtual]}${unidadeMedida})`);
+        naoVisitados.delete(noAtual);
+
+        for (let vizinho in grafo[noAtual]) {
+            let peso = grafo[noAtual][vizinho];
+            let distanciaTotal = distancias[noAtual] + peso;
+
+            if (distanciaTotal < distancias[vizinho]) {
+                distancias[vizinho] = distanciaTotal;
+                anteriores[vizinho] = noAtual;
+                console.log(`   └─ Atualizou rota para [${vizinho}]: ${distanciaTotal}${unidadeMedida}`);
+            }
+        }
+    }
+
+    let caminho = [];
+    let noPasso = destino;
+    while (noPasso) {
+        caminho.unshift(noPasso);
+        noPasso = anteriores[noPasso];
+    }
+
+    return { caminho, custoTotal: distancias[destino] };
+}
