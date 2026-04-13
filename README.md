@@ -15,6 +15,12 @@ O objetivo desta aplicação é encontrar o **caminho de menor custo (menor lat�
 
 ## Screenshots
 
+![Execução parte 1](./assets/print-1.jpg)
+
+![Execução parte 2](./assets/print-2.jpg)
+
+![Execução parte 3](./assets/print-3.jpg)
+
 ## 🛠️ Como Executar
 
 ### Pré-requisitos
