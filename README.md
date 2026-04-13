@@ -4,19 +4,27 @@
 | 202016266  |  Gabriel Marques de Souza |
 | 222008468  |  Danilo Sarmento Barros |
 
-## Sobre 
-Descreva os objetivos do seu projeto e como ele funciona. 
+# Otimização de Roteamento em Microsserviços (Algoritmo de Dijkstra)
+
+Este projeto aplica a teoria de grafos para resolver um problema real de engenharia de software: a redução de latência e otimização de tráfego em arquiteturas de microsserviços distribuídas.
+
+## Contexto do Problema
+Em sistemas modernos, uma única ação do utilizador pode desencadear uma cascata de chamadas entre dezenas de serviços. Cada ligação possui uma latência variável (peso da aresta) influenciada por fatores como carga de rede, distância física ou processamento.
+
+O objetivo desta aplicação é encontrar o **caminho de menor custo (menor latência)** para garantir que a informação flua do ponto de entrada (*Gateway*) até ao destino final da forma mais eficiente possível.
 
 ## Screenshots
-Adicione 3 ou mais screenshots do projeto em funcionamento.
 
-## Instalação 
-Linguagem: Node.js (JavaScript)<br>
-Framework: (caso exista)<br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
+## 🛠️ Como Executar
 
-## Uso 
-Explique como usar seu projeto caso haja algum passo a passo após o comando de execução.
+### Pré-requisitos
+* [Node.js](https://nodejs.org/) instalado.
 
-## Outros 
-Quaisquer outras informações sobre seu projeto podem ser descritas abaixo.
+### Passo a Passo
+1.  Clona este repositório para a tua máquina local.
+2.  Navega até à pasta do projeto através do terminal.
+3.  Executa o ficheiro interativo:
+
+    ```bash
+    node djikstra.js
+    ```

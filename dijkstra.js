@@ -9,7 +9,7 @@ const cores = {
 
 const cenarios = {
     "1": {
-        titulo: "E-commerce Padrão (10 Nós)",
+        titulo: "E-commerce (10 Nós)",
         inicio: "Gateway", destino: "DB_Principal",
         unidade: "ms",
         grafo: {
