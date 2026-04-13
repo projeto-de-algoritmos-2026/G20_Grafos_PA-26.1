@@ -164,3 +164,41 @@ function dijkstraVisual(grafo, inicio, destino, unidadeMedida) {
 
     return { caminho, custoTotal: distancias[destino] };
 }
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+function exibirMenu() {
+    console.clear();
+    console.log(`${cores.magenta}${cores.bold}==================================================`);
+    console.log(`  SIMULADOR DE DIJKSTRA - ARQUITETURA CLOUD`);
+    console.log(`==================================================${cores.reset}\n`);
+    
+    console.log(`Escolha uma topologia de microsserviços para testar:\n`);
+    
+    for (let key in cenarios) {
+        console.log(`  [${cores.green}${key}${cores.reset}] - ${cenarios[key].titulo}`);
+    }
+    console.log(`  [${cores.red}0${cores.reset}] - Sair\n`);
+
+    rl.question(`Digite o número da opção desejada: `, (resposta) => {
+        if (resposta === '0') {
+            console.log(`\nEncerrando terminal...`);
+            rl.close();
+            return;
+        }
+
+        const cenarioEscolhido = cenarios[resposta];
+
+        if (cenarioEscolhido) {
+            executarCenario(cenarioEscolhido);
+        } else {
+            console.log(`\n${cores.red}Opção inválida!${cores.reset}`);
+            setTimeout(exibirMenu, 1500);
+        }
+    });
+}
+
+exibirMenu();
