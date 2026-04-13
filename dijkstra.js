@@ -202,3 +202,25 @@ function exibirMenu() {
 }
 
 exibirMenu();
+
+function executarCenario(cenario) {
+    console.clear();
+    console.log(`${cores.magenta}${cores.bold}=== ${cenario.titulo.toUpperCase()} ===${cores.reset}\n`);
+    
+    cenario.desenhar();
+
+    setTimeout(() => {
+        const resultado = dijkstraVisual(cenario.grafo, cenario.inicio, cenario.destino, cenario.unidade);
+        
+        console.log(`\n${cores.green}${cores.bold}╔════════════════════════════════════════════════════════════════════════╗${cores.reset}`);
+        console.log(`${cores.green}${cores.bold}║ ROTA DE MENOR LATÊNCIA ENCONTRADA!                                     ║${cores.reset}`);
+        console.log(`${cores.green}${cores.bold}╚════════════════════════════════════════════════════════════════════════╝${cores.reset}`);
+        console.log(`${cores.green}-> Caminho percorrido: ${resultado.caminho.join(' ➔ ')}${cores.reset}`);
+        console.log(`${cores.green}-> Latência Total: ${resultado.custoTotal} ${cenario.unidade}${cores.reset}\n`);
+        
+        rl.question(`Pressione ENTER para voltar ao menu principal...`, () => {
+            exibirMenu();
+        });
+
+    }, 800);
+}
