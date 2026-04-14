@@ -4,6 +4,10 @@
 | 202016266  |  Gabriel Marques de Souza |
 | 222008468  |  Danilo Sarmento Barros |
 
+## Apresentação
+
+[Clique aqui para assistir ao vídeo](https://drive.google.com/file/d/1aXaCfXMwMoMKOYXzkxJaQ2RjHWxswPJs/view?usp=sharing)
+
 # Otimização de Roteamento em Microsserviços (Algoritmo de Dijkstra)
 
 Este projeto aplica a teoria de grafos para resolver um problema real de engenharia de software: a redução de latência e otimização de tráfego em arquiteturas de microsserviços distribuídas.
